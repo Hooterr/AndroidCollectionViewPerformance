@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dotnet8Maui.MainPage">
+
+    <Grid
+        RowDefinitions="50,*,auto"
+        ColumnDefinitions="auto,*,auto">
+
+        <BoxView BackgroundColor="red"
+                 WidthRequest="50"
+                 Grid.Column="0"/>
+        
+        <BoxView BackgroundColor="green"
+                 Grid.Column="1"/>
+
+        <BoxView BackgroundColor="blue"
+                 WidthRequest="50"
+                 Grid.Column="2"/>
+
+        <CollectionView
+            Scrolled="Collection_Scrolled"
+            HeightRequest="668"
+            VerticalScrollBarVisibility="Always"
+            BackgroundColor="Yellow" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Collection">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:Int32">
+        
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Action3" BackgroundColor="Pink"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <SwipeView.LeftItems>
+                            <SwipeItems>
+                                <SwipeItem BackgroundColor="Yellow" Text="Action1"/>
+                                <SwipeItem BackgroundColor="PaleVioletRed" Text="Action2"/>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid ColumnDefinitions="*,*,*"
+                              BackgroundColor="White"
+                              ColumnSpacing="10"
+                              RowDefinitions="40"
+                              Padding="0,5">
+                            <Label VerticalTextAlignment="Center" Grid.Column="0" BackgroundColor="Red" Text="{Binding}"/>
+                            <Path Grid.Column="0" TranslationX="50" Data="M 0,10 L 10,10 L 5,0Z" Fill="White" VerticalOptions="Center"/>
+                            <Button Grid.Column="1" BackgroundColor="green" Text="{Binding}" Padding="0"/>
+                            <Entry Grid.Column="2" BackgroundColor="blue" TextColor="white" Text="{Binding}"/>
+                        </Grid>
+                            
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label Text="{Binding Source={Reference Collection}, Path=Height, StringFormat='CollectionView.Height:{0}'}" Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Start"/>
+        <Label Text="Last scroll speed" TranslationY="25" Grid.Column="1" HorizontalTextAlignment="Start"/>
+        <Label x:Name="ScrollText" TranslationY="25" Grid.Column="1" HorizontalTextAlignment="End"/>
+
+    </Grid>
+
+</ContentPage>
