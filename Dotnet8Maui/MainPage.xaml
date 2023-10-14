@@ -20,7 +20,6 @@
 
         <CollectionView
             Scrolled="Collection_Scrolled"
-            HeightRequest="668"
             VerticalScrollBarVisibility="Always"
             BackgroundColor="Yellow" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="Collection">
             <CollectionView.ItemTemplate>
